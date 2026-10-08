@@ -1,0 +1,1213 @@
+/* ==========================================================================
+   AeroForge — Ergonomic Aerospace Studio Themes
+   Designed for sustained engineering sessions and minimal eye strain.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Theme Palettes
+   -------------------------------------------------------------------------- */
+
+/* Default & Calm Slate (Nord / Studio Dark) */
+:root,
+[data-theme="slate"] {
+  --bg: #0f141c;
+  --card-bg: #161c28;
+  --card-border: #232b3c;
+  --card-subtle: #1c2433;
+  --text-h: #e2e8f0;
+  --text: #94a3b8;
+  --text-muted: #64748b;
+
+  --accent: #38bdf8;
+  --accent-hover: #0ea5e9;
+  --accent-subtle: rgba(56, 189, 248, 0.12);
+  --accent-border: rgba(56, 189, 248, 0.28);
+
+  --plot-bg: #0b0f17;
+  --plot-grid: #1e2638;
+  --plot-axis: #3f4c63;
+  --plot-axis-text: #7e8da4;
+
+  --airfoil-stroke: #38bdf8;
+  --airfoil-fill-mid: #0284c7;
+  --airfoil-fill-end: #0369a1;
+  --camber-stroke: #fbbf24;
+  --chord-stroke: #4b5563;
+  --wind-stroke: #38bdf8;
+  --dim-stroke: #a78bfa;
+  --quarter-chord: #60a5fa;
+
+  --cl-color: #38bdf8;
+  --cd-color: #f87171;
+  --ld-color: #34d399;
+
+  --input-bg: #121722;
+  --input-border: #232c3d;
+  --slider-track: #202838;
+}
+
+/* Paper Technical (Blueprint / NASA Technical Report Light) */
+[data-theme="paper"] {
+  --bg: #f5f6f8;
+  --card-bg: #ffffff;
+  --card-border: #dbe0e6;
+  --card-subtle: #f0f3f6;
+  --text-h: #1e293b;
+  --text: #475569;
+  --text-muted: #64748b;
+
+  --accent: #0284c7;
+  --accent-hover: #0369a1;
+  --accent-subtle: rgba(2, 132, 199, 0.08);
+  --accent-border: rgba(2, 132, 199, 0.25);
+
+  --plot-bg: #f8fafc;
+  --plot-grid: #e2e8f0;
+  --plot-axis: #94a3b8;
+  --plot-axis-text: #475569;
+
+  --airfoil-stroke: #0284c7;
+  --airfoil-fill-mid: #0369a1;
+  --airfoil-fill-end: #075985;
+  --camber-stroke: #d97706;
+  --chord-stroke: #94a3b8;
+  --wind-stroke: #0284c7;
+  --dim-stroke: #7c3aed;
+  --quarter-chord: #2563eb;
+
+  --cl-color: #0284c7;
+  --cd-color: #dc2626;
+  --ld-color: #059669;
+
+  --input-bg: #ffffff;
+  --input-border: #cbd5e1;
+  --slider-track: #e2e8f0;
+}
+
+/* Warm Charcoal (Night Shift / Low Blue Light) */
+[data-theme="warm"] {
+  --bg: #18181b;
+  --card-bg: #212124;
+  --card-border: #333338;
+  --card-subtle: #29292e;
+  --text-h: #f5f0e8;
+  --text: #a8a29e;
+  --text-muted: #78716c;
+
+  --accent: #f59e0b;
+  --accent-hover: #d97706;
+  --accent-subtle: rgba(245, 158, 11, 0.12);
+  --accent-border: rgba(245, 158, 11, 0.28);
+
+  --plot-bg: #121214;
+  --plot-grid: #2a2a30;
+  --plot-axis: #52525b;
+  --plot-axis-text: #a8a29e;
+
+  --airfoil-stroke: #fbbf24;
+  --airfoil-fill-mid: #d97706;
+  --airfoil-fill-end: #b45309;
+  --camber-stroke: #34d399;
+  --chord-stroke: #52525b;
+  --wind-stroke: #fbbf24;
+  --dim-stroke: #fb7185;
+  --quarter-chord: #fbbf24;
+
+  --cl-color: #fbbf24;
+  --cd-color: #f87171;
+  --ld-color: #34d399;
+
+  --input-bg: #19191c;
+  --input-border: #38383e;
+  --slider-track: #2e2e34;
+}
+
+/* --------------------------------------------------------------------------
+   2. Main Container & Layout
+   -------------------------------------------------------------------------- */
+
+.aeroforge-app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 20px 28px;
+  box-sizing: border-box;
+  gap: 20px;
+}
+
+/* Header */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 22px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.header-branding {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  background: var(--accent-subtle);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+}
+
+.logo-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.header-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--text-h);
+}
+
+.brand-badge {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 2px 7px;
+  border-radius: 5px;
+  background: var(--accent-subtle);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+}
+
+.brand-subtitle {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Header Right: Theme Switcher & Status */
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.theme-switcher {
+  display: inline-flex;
+  padding: 3px;
+  background: var(--card-subtle);
+  border: 1px solid var(--card-border);
+  border-radius: 7px;
+  gap: 2px;
+}
+
+.theme-pill-btn {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.theme-pill-btn:hover {
+  color: var(--text-h);
+  background: rgba(125, 125, 125, 0.08);
+}
+
+.theme-pill-btn.active {
+  background: var(--card-bg);
+  color: var(--text-h);
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.header-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--ld-color);
+}
+
+.status-profile-tag {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 11px;
+  border-radius: 6px;
+  background: var(--card-subtle);
+  border: 1px solid var(--card-border);
+  color: var(--text-h);
+}
+
+/* --------------------------------------------------------------------------
+   3. Studio Layout Grid
+   -------------------------------------------------------------------------- */
+
+.studio-layout {
+  display: grid;
+  grid-template-columns: 410px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 1150px) {
+  .studio-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.controls-column {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.viewport-column {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Card Base */
+.parameter-panel-card,
+.prediction-panel-card,
+.airfoil-plot-card,
+.geometry-summary-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.panel-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.current-profile-pill {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  background: var(--accent-subtle);
+  color: var(--accent);
+  border-radius: 5px;
+  border: 1px solid var(--accent-border);
+}
+
+/* --------------------------------------------------------------------------
+   4. Parameter Controls & Presets
+   -------------------------------------------------------------------------- */
+
+.presets-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--card-border);
+  margin-bottom: 14px;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+
+.preset-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.preset-btn {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 4px;
+  border-radius: 5px;
+  border: 1px solid var(--card-border);
+  background: var(--card-subtle);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+}
+
+.preset-btn:hover {
+  background: var(--accent-subtle);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.preset-btn.active {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+}
+
+.direct-code-form {
+  display: flex;
+  gap: 6px;
+  margin-top: 3px;
+}
+
+.code-input {
+  flex: 1;
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text-h);
+}
+
+.code-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.code-submit-btn {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 5px;
+  border: 1px solid var(--card-border);
+  background: var(--card-subtle);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.code-submit-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.input-error-msg {
+  font-size: 11px;
+  color: var(--cd-color);
+}
+
+/* Param Groups */
+.param-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--card-border);
+  margin-bottom: 14px;
+}
+
+.group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.group-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.group-tag {
+  font-size: 9px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 5px;
+  border-radius: 3px;
+  background: var(--card-subtle);
+  color: var(--text-muted);
+}
+
+.param-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.param-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.param-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.param-value-box {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.param-num-input {
+  font-family: var(--mono);
+  font-size: 12px;
+  width: 62px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text-h);
+  text-align: right;
+}
+
+.param-num-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.unit-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: var(--mono);
+}
+
+.param-slider {
+  width: 100%;
+  accent-color: var(--accent);
+  cursor: pointer;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--slider-track);
+}
+
+.param-help {
+  margin: 0;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Mesh Settings */
+.mesh-settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.mesh-controls-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.control-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.field-title {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.mesh-select {
+  font-size: 11px;
+  padding: 5px 8px;
+  border-radius: 5px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text-h);
+}
+
+.panel-footer {
+  margin-top: 6px;
+}
+
+.reset-all-btn {
+  width: 100%;
+  padding: 7px 10px;
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: 5px;
+  border: 1px dashed var(--card-border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.reset-all-btn:hover {
+  border-color: var(--text);
+  color: var(--text-h);
+}
+
+/* Validation Alerts */
+.validation-error-box,
+.validation-warning-box {
+  padding: 8px 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 11px;
+}
+
+.validation-error-box {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: var(--cd-color);
+}
+
+.validation-warning-box {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  color: var(--camber-stroke);
+}
+
+/* --------------------------------------------------------------------------
+   5. Interactive Airfoil Plot Card
+   -------------------------------------------------------------------------- */
+
+.airfoil-plot-card {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.plot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.plot-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.airfoil-badge {
+  font-family: var(--mono);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-h);
+}
+
+.spec-badge,
+.aoa-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.spec-badge {
+  background: var(--card-subtle);
+  border: 1px solid var(--card-border);
+  color: var(--text-muted);
+}
+
+.aoa-badge {
+  background: var(--accent-subtle);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+}
+
+.plot-subtitle {
+  margin: 3px 0 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.plot-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.action-btn {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid var(--card-border);
+  background: var(--card-subtle);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.action-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.plot-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 12px;
+  background: var(--card-subtle);
+  border-radius: 7px;
+  border: 1px solid var(--card-border);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.toolbar-toggles {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.toggle-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-camber { background-color: var(--camber-stroke); }
+.dot-chord { background-color: var(--chord-stroke); }
+.dot-markers { background-color: var(--airfoil-stroke); }
+
+.highlight-toggle {
+  color: var(--text-h);
+  font-weight: 600;
+}
+
+.zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.zoom-btn {
+  font-family: var(--mono);
+  font-size: 12px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.zoom-btn.reset-btn {
+  width: auto;
+  padding: 0 7px;
+  font-size: 10px;
+}
+
+.zoom-text {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  min-width: 32px;
+  text-align: center;
+}
+
+/* SVG Canvas */
+.svg-container {
+  position: relative;
+  background: var(--plot-bg);
+  border-radius: 7px;
+  border: 1px solid var(--card-border);
+  overflow: hidden;
+  transition: background-color 0.25s ease;
+}
+
+.airfoil-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.axis-tick-text {
+  font-family: var(--mono);
+  font-size: 10px;
+  fill: var(--plot-axis-text);
+}
+
+.axis-title-text {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  fill: var(--plot-axis-text);
+}
+
+.marker-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  fill: var(--plot-axis-text);
+}
+
+.camber-marker-label {
+  fill: var(--camber-stroke);
+}
+
+.thickness-marker-label {
+  fill: var(--dim-stroke);
+}
+
+.quarter-chord-label {
+  fill: var(--quarter-chord);
+}
+
+.chord-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  fill: var(--chord-stroke);
+}
+
+.wind-label-text {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* Tooltip */
+.hover-tooltip {
+  position: absolute;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-h);
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 10;
+}
+
+.tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tooltip-bullet {
+  font-size: 8px;
+}
+
+.upper-bullet { color: var(--airfoil-stroke); }
+.lower-bullet { color: var(--airfoil-stroke); }
+.camber-bullet { color: var(--camber-stroke); }
+
+.plot-legend-footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 2px;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.legend-line {
+  width: 16px;
+  height: 2px;
+  border-radius: 1px;
+}
+
+.line-surface { background: var(--airfoil-stroke); }
+.line-camber { background: var(--camber-stroke); border-bottom: 2px dashed var(--camber-stroke); height: 0; }
+.line-chord { background: var(--chord-stroke); border-bottom: 2px dashed var(--chord-stroke); height: 0; }
+.marker-extrema { width: 6px; height: 6px; border-radius: 50%; background: var(--dim-stroke); }
+
+/* --------------------------------------------------------------------------
+   6. Prediction Pipeline Card
+   -------------------------------------------------------------------------- */
+
+.prediction-panel-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.prediction-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.prediction-subtitle {
+  margin: 2px 0 0;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.endpoint-toggle-btn {
+  font-size: 10px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--card-border);
+  background: var(--card-subtle);
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.endpoint-config-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  background: var(--card-subtle);
+  border-radius: 5px;
+  border: 1px solid var(--card-border);
+}
+
+.config-label {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.endpoint-input {
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 5px 7px;
+  border-radius: 4px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text-h);
+}
+
+.config-hint {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.predict-btn {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: none;
+  background: var(--accent);
+  color: #ffffff;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.predict-btn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.predict-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.spinner-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn-spinner {
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.prediction-results {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.backend-offline-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 7px 9px;
+  background: var(--accent-subtle);
+  border: 1px solid var(--accent-border);
+  border-radius: 5px;
+  font-size: 11px;
+  color: var(--accent);
+  line-height: 1.4;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.result-metric-card {
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: var(--card-subtle);
+  border: 1px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.result-metric-card .metric-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: var(--text-muted);
+}
+
+.metric-val-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.metric-symbol {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.metric-value {
+  font-family: var(--mono);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.lift-card .metric-value { color: var(--cl-color); }
+.drag-card .metric-value { color: var(--cd-color); }
+.efficiency-card .metric-value { color: var(--ld-color); }
+
+.prediction-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.payload-inspector-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-top: 1px solid var(--card-border);
+  padding-top: 8px;
+}
+
+.payload-toggle-btn {
+  font-size: 10px;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+}
+
+.payload-toggle-btn:hover {
+  color: var(--text-h);
+}
+
+.payload-json-block {
+  font-family: var(--mono);
+  font-size: 10px;
+  background: var(--card-subtle);
+  border: 1px solid var(--card-border);
+  border-radius: 5px;
+  padding: 6px;
+  margin: 0;
+  color: var(--text-h);
+  overflow-x: auto;
+}
+
+/* --------------------------------------------------------------------------
+   7. Geometric Summary Card
+   -------------------------------------------------------------------------- */
+
+.geometry-summary-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.summary-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.specs-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 800px) {
+  .specs-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.specs-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--card-subtle);
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--card-border);
+}
+
+.specs-block-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-h);
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 4px;
+}
+
+.spec-table {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+}
+
+.spec-name {
+  color: var(--text-muted);
+}
+
+.spec-val {
+  font-family: var(--mono);
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+/* --------------------------------------------------------------------------
+   8. Footer
+   -------------------------------------------------------------------------- */
+
+.app-footer {
+  margin-top: auto;
+  padding: 12px 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+}
+
+.footer-principles {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.principle-pill {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.principle-pill strong {
+  color: var(--text-h);
+}
