@@ -95,14 +95,21 @@ function App() {
 
         <div className="header-controls">
           {/* Theme Switcher Segmented Control */}
+
           <div className="theme-switcher" role="radiogroup" aria-label="Visual Theme">
+            <div>
+              <span>Switch Theme:</span>
+            </div>
+            <div>
+              
+            </div>
             <button
               type="button"
               className={`theme-pill-btn ${theme === 'slate' ? 'active' : ''}`}
               onClick={() => setTheme('slate')}
               title="Calm Slate — Soothing low-contrast dark mode"
             >
-              🌙 Calm Slate
+               Dark
             </button>
             <button
               type="button"
@@ -110,7 +117,7 @@ function App() {
               onClick={() => setTheme('paper')}
               title="Paper Technical — Clean eggshell blueprint light mode"
             >
-              ☀️ Paper Light
+              Light
             </button>
             <button
               type="button"
@@ -118,7 +125,7 @@ function App() {
               onClick={() => setTheme('warm')}
               title="Warm Charcoal — Low-strain amber night shift mode"
             >
-              🕯️ Warm Charcoal
+              High Contrast
             </button>
           </div>
 
